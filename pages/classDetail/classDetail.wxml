@@ -1,0 +1,63 @@
+<!--pages/classDetail/classDetail.wxml-->
+<view class='home_main'>
+  <view class="titleBg">
+    <image class="imgBg" src="/img/bj@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+    <view class="main">
+      <view class="title">
+        <image class='goback' bindtap='goback' src='/img/goback.png'></image>
+        <text selectable="false" space="false" decode="false">试听课详情</text>
+      </view>
+      <view class="portrait">
+        <image src="https://images.unsplash.com/photo-1551446591-142875a901a1?w=640" />
+        <view class="main_title">
+          <text class="userName" selectable="false" space="false" decode="false">
+                        小辣椒
+                    </text>
+          <text class="phone">著名足球教练</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='main_deteil'>
+    <text class='title'>香蕉射门</text>
+    <view class='time'>
+      <text>上课时段:2021.23-4568.56</text>
+      <text>课时:32课时</text>
+    </view>
+    <view class='Detail'>
+      <view class='detail_list'>
+        <text class='detail_Title'>教练介绍</text>
+        <text class='detail_main'>题目就是如上要求，使用纯 CSS，完成单行文本居中显示文字，多行居左显示，最多两行超过用省略号结尾，效果如下： 不愿看长篇大论的可以先看看效果：-webkit- 内核下 接下来就一步一步来实现这个效果。题目就是如上要求，使用纯 CSS，完成单行文本居中显示文字，多行居左显示，最多两行超过用省略号结尾，效果如下： 不愿看长篇大论的可以先看看效果：-webkit- 内核下 接下来就一步一步来实现这个效果。</text>
+      </view>
+      <view class='detail_list' style='border:0'>
+        <text class='detail_Title'>课程介绍</text>
+        <text class='detail_main'>题目就是如上要求，使用纯 CSS，完成单行文本居中显示文字，多行居左显示，最多两行超过用省略号结尾，效果如下： 不愿看长篇大论的可以先看看效果：-webkit- 内核下 接下来就一步一步来实现这个效果。题目就是如上要求，使用纯 CSS，完成单行文本居中显示文字，多行居左显示，最多两行超过用省略号结尾，效果如下： 不愿看长篇大论的可以先看看效果：-webkit- 内核下 接下来就一步一步来实现这个效果。</text>
+      </view>
+      <button bindtap='showBottom'>立即预约</button>
+    </view>
+    <view class='bottom_tap'  wx:if="{{isShowTime}}">
+      <view class='bottom_tap_title'>
+        <text>选择试听时间</text>
+        <image class="close" src="/img/关闭@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="true" binderror="" bindload="" bindtap='showBottom' />
+      </view>
+      <view class='bottom_tap_time'>
+        <view class="{{index == activeIndex?'active':''}}" data-Index="{{index}}" bindtap='isActivelist' wx:for="{{timeList}}">
+          <text>{{item}}</text>
+        </view>
+      </view>
+      <button bindtap="ShowForm">确定试听</button>
+    </view>
+    <view class='bottom_tap'  wx:if="{{isShowForm}}">
+      <view class='bottom_tap_title'>
+        <text>填写个人信息</text>
+        <image class="close" src="/img/关闭@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="true" binderror="" bindload="" bindtap='ShowForm' />
+      </view>
+      <view class='form'>
+        <view><text>姓名</text><input ></input></view>
+        <view><text>年龄</text><input ></input></view>
+        <view><text>联系方式</text><input></input></view>
+      </view>
+      <button bindtap='submit'>确定</button>
+    </view>
+  </view>
+</view>

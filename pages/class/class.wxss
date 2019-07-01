@@ -1,0 +1,117 @@
+/* pages/class/class.wxss */
+.main{
+  background: #f3f5f7;
+}
+.filtrate{
+  height: 80rpx;
+  margin-top: 1rpx;
+  display: flex;
+  justify-content: flex-end;
+  background: #fff;
+  align-items: center;
+  z-index: 3;
+}
+.filtrate view{
+  width: 151rpx;
+  border-left: 2rpx solid #f3f5f7;
+  background: #fff;
+  font-size: 26rpx;
+  color: #999999;
+  height: 100%;
+  padding-left: 38rpx;
+  display: flex;
+  align-items: center;
+}
+.filtrate view image{
+  height: 32rpx;
+  width: 32rpx;
+  margin-right: 9rpx;
+}
+.filtrate_list{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    background: #ededed;
+}
+.filtrate_list_item{
+    height: 84rpx;
+    margin-bottom: 2rpx;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 26rpx;
+    color: #9a9a9a;
+    padding: 0 32rpx 0 41rpx;
+}
+.filtrate_list_item image{
+    width: 20rpx;
+    height: 20rpx;
+}
+.anmation{
+    /* animation: mymove 2s infinite; */
+    transform: translateY(94rpx) ;
+}
+@keyframes mymove {
+    from {
+      transform: translateY(-94rpx)
+    }
+  }
+swiper{
+    height: 100%;
+  }
+  .scroll-view-item{
+    height: 190rpx;
+    background: #fff;
+    padding: 30rpx;
+    margin-top: 2rpx;
+  }
+  .scroll-view-item .view-item{
+    display: flex;
+    height: 100%;
+  }
+  .scroll-view-item .left_img{
+    width: 250rpx;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 9rpx;
+    margin-right: 20rpx;
+  }
+  .scroll-view-item .left_img image{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .right_view{
+    width: 378rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .right_view text{
+    font-size: 30rpx;
+    line-height: 50rpx;
+    color: #333;
+  }
+  .right_view .price{
+    color: #ff7250;
+  }
+  .right_view view{
+    /* height: 25rpx; */
+    display: flex;
+    justify-content: space-between;
+  }
+  .right_view view view text{
+    color: #999;
+  }
+  .right_view view view image{
+    height: 24rpx;
+    width: 22rpx;
+    margin-top: 12rpx;
+    margin-right: 9rpx;
+  }
+  ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

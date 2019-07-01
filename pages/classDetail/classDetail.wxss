@@ -1,0 +1,220 @@
+/* pages/classDetail/classDetail.wxss */
+.home_main{
+  position: relative;
+}
+.titleBg{
+    height: 477rpx;
+    position: relative;
+}
+.titleBg .imgBg{
+    width: 100%;
+    height: 100%;
+}
+.titleBg .main{ 
+    position: absolute;
+    top: 64rpx;
+    width: 100%;
+}
+.titleBg .title{
+    font-size: 34rpx;
+    color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+.titleBg .goback{
+  width: 21rpx;
+  height: 43rpx;
+  margin-right: 238rpx;
+  margin-left: 31rpx;
+}
+.titleBg .portrait{
+    /* height: 103rpx; */
+    /* padding: 0 59rpx; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 68rpx;
+    justify-content: center;
+}
+.titleBg .portrait image{
+    height: 141rpx;
+    width: 141rpx;
+    border-radius: 50%;
+    border:1px solid #fff;
+}
+.titleBg .main_title{
+}
+
+.titleBg .portrait text{
+    font-size: 24rpx;
+    color: #fff;
+    text-align: center;
+    
+}
+.titleBg .portrait .userName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 47rpx;
+}
+.main_deteil{
+  top: 434rpx;
+  border-radius: 12rpx;
+  position: absolute;
+  width: calc(100% - 58rpx);
+  background: #ededed;
+  padding: 32rpx 30rpx 0;
+  height: 870rpx;
+}
+.main_deteil .title{
+  font-size: 24rpx;
+  color: #333;
+  font-weight: bold;
+  padding-left: 26rpx;
+}
+.main_deteil .time{
+  line-height: 30rpx;
+  padding-left: 26rpx;
+  margin-bottom: 23rpx;
+}
+.main_deteil .time text{
+  font-size: 20rpx;
+  color: #676767;
+}
+.main_deteil .Detail {
+  height: 730rpx;
+  background: #fff;
+  box-shadow: 2rpx 2rpx 10rpx 4rpx #afadae;
+  width: calc(100% - 54rpx);
+  padding: 0 27rpx ;
+  border-radius: 19rpx;
+  position: relative;
+  
+}
+.main_deteil .detail_list{
+  padding-bottom: 22rpx;
+  padding-top: 20rpx;
+  border-bottom: 1rpx solid #e1e1e1;
+}
+.main_deteil .detail_list:last-child{
+  border:0;
+}
+.main_deteil .Detail .detail_Title{
+  border-left: 4rpx solid #4b09eb;
+  font-size: 24rpx;
+  color: #333;
+  padding-left: 11rpx;
+  display: block;
+}
+.main_deteil .Detail .detail_main{
+    display: -webkit-box;
+    font-size:20rpx;
+    color:#676767;
+    line-height: 30rpx;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:4;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    text-indent: 17rpx;
+    padding-top: 22rpx;
+    
+}
+.main_deteil .Detail button{
+  background: #e30404;
+  color: #fff;
+  font-size: 30rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  width: 419rpx;
+  border-radius: 15rpx;
+  margin-top: 157rpx;
+  position: absolute;
+  bottom: 34rpx;
+  left: 140rpx;
+}
+/* 底部弹框 */
+.bottom_tap{
+  height: 558rpx;
+  width: calc(100% - 64rpx);
+  position: absolute;
+  background: #fff;
+  bottom: 0;
+  left: 0;
+  padding: 19rpx 30rpx 0 34rpx;
+}
+.bottom_tap .bottom_tap_title {
+  font-size: 26rpx;
+  color: #343434;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 28rpx;
+}
+.bottom_tap .bottom_tap_title .close{
+  width: 36rpx;
+  height: 36rpx;
+}
+.bottom_tap .bottom_tap_time{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 22rpx;
+  color: #cccccc;
+  align-items: center;
+  overflow-y: scroll;
+  height: 340rpx;
+}
+.bottom_tap .bottom_tap_time view{
+  width: 300rpx;
+  height: 56rpx;
+  margin-bottom: 30rpx;
+  border:  1rpx solid #eaeaea;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+ 
+}
+.bottom_tap .bottom_tap_time .active{
+  border:  1rpx solid #19a899;
+  color: #19a899;
+}
+.bottom_tap button{
+  color: #19a899;
+  background: #19a899;
+  color: #fff;
+  font-size: 30rpx;
+  height: 71rpx;
+  position: absolute;
+  line-height: 71rpx;
+  bottom: 35rpx;
+  width: calc(100% - 64rpx);
+}
+.bottom_tap .form{
+  font-size: 27rpx;
+  margin-top: 44rpx;
+  color: #333;
+  
+}
+.bottom_tap .form text{
+  margin-right: 21rpx;  
+}
+.bottom_tap .form view{
+  display: flex;
+  margin-bottom: 50rpx;
+}
+.bottom_tap input{
+  border: 1rpx solid #19a899;
+  border-radius: 5rpx;
+  height: 50rpx;
+  width: 521rpx;
+}
+.bottom_tap .form view:last-child input{
+  width: 468rpx;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
