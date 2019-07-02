@@ -1,6 +1,10 @@
 /* pages/classDetail/classDetail.wxss */
+page{
+  height: 100%;
+}
 .home_main{
   position: relative;
+  height: 100%;
 }
 .titleBg{
     height: 477rpx;
@@ -65,7 +69,7 @@
   width: calc(100% - 58rpx);
   background: #ededed;
   padding: 32rpx 30rpx 0;
-  height: 870rpx;
+  height: calc(100% - 465rpx);
 }
 .main_deteil .title{
   font-size: 24rpx;
@@ -83,13 +87,13 @@
   color: #676767;
 }
 .main_deteil .Detail {
-  height: 730rpx;
   background: #fff;
   box-shadow: 2rpx 2rpx 10rpx 4rpx #afadae;
   width: calc(100% - 54rpx);
   padding: 0 27rpx ;
   border-radius: 19rpx;
   position: relative;
+  height: calc(100% - 150rpx);
   
 }
 .main_deteil .detail_list{

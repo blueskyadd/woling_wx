@@ -1,6 +1,6 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+<view class="auth">
+  <image src="https://res.wx.qq.com/wxopenres/htmledition/images/favicon32f740.ico" class="img" mode="aspectFill"></image>
+  <view class="title">微信授权页面</view>
+  <view class="describe">此页面是微信授权页面，点击下方按钮弹出授权或跳转页面</view>
+  <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击微信授权</button>
 </view>

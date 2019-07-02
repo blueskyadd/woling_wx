@@ -1,4 +1,4 @@
-// pages/classDetail/classDetail.js
+var call = require("../../utils/request.js")
 Page({
 
   /**
@@ -18,14 +18,20 @@ Page({
       '03.26 13:30-14.30',
       '03.26 13:30-14.30',
       '03.26 13:30-14.30',
-    ]
+    ],
+    detailObj:{},
+    classId:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.setData({
+      classId: options.id
+    })
+    this.getClassDetail(options.id)
   },
 
   /**
@@ -85,10 +91,20 @@ Page({
     this.setData({
       isShowTime: !this.data.isShowTime
     })
+    this.getTimeList()
+    
   },
   ShowForm(){
     this.setData({
       isShowForm: !this.data.isShowForm
+    })
+  },
+  getTimeList(){
+    call.getData('good/wx/coursetime/?course=' + this.data.classId, res => {
+      console.log(res)
+      this.timeList = res.data.results
+    }, err => {
+      console.log(err)
     })
   },
   isActivelist(data){
@@ -103,6 +119,14 @@ Page({
       icon: 'none',
       duration: 1000,
       mask: true
+    })
+  },
+  /**@name 加载详情数据 */
+  getClassDetail(Id){
+    call.getData('good/wx/course/'+Id +'/', res =>{
+      // console.log(res)
+    },err =>{
+      // console.log(err)
     })
   }
 })

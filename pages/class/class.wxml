@@ -4,62 +4,12 @@
          <view bindtap="changeMask"> <image class="" src="/img/筛选@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image><text>筛选</text></view>
      </view>
      <view   class="filtrate_list" wx:if="{{isShow}}">
-         <view class="filtrate_list_item" hover-class="none" hover-stop-propagation="false">
-             <text>3-6岁</text> <image class="" src="/img/对@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-         </view>
-         <view class="filtrate_list_item" hover-class="none" hover-stop-propagation="false">
-             <text>6-9岁</text> <image class="" src="/img/对@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-         </view>
-         <view class="filtrate_list_item" hover-class="none" hover-stop-propagation="false">
-             <text>12-15岁</text> <image class="" src="/img/对@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+         <view class="filtrate_list_item" bindtap="changeFilter" hover-class="none" id="{{item.id}}" hover-stop-propagation="false" wx:for="{{filtrate_list}}">
+             <text>{{item.value}}</text> <image wx:if="{{item.id == setIndexId}}" class="" src="/img/对@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
          </view>
      </view>
     <scroll-view scroll-y style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <view id="green" class="scroll-view-item bc_green">
-      <view class="view-item" hover-class="none" hover-stop-propagation="false">
-        <view class="left_img">
-            <image class="" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="right_view">
-          <view><text >射门课程(全能版第八期)</text></view>
-          <view><text class="price">￥3546</text><view><image class="" src="/img/教练@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" /><text>高嵩</text></view></view>
-        </view>
-      </view>
-    </view>
-    <view id="green" class="scroll-view-item bc_green">
-      <view class="view-item" hover-class="none" hover-stop-propagation="false">
-        <view class="left_img">
-            <image class="" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="right_view">
-          <view><text >射门课程(全能版第八期)</text></view>
-          <view><text class="price">￥3546</text><view><image class="" src="/img/教练@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" /><text>高嵩</text></view></view>
-        </view>
-      </view>
-    </view>
-    <view id="green" class="scroll-view-item bc_green">
-      <view class="view-item" hover-class="none" hover-stop-propagation="false">
-        <view class="left_img">
-            <image class="" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="right_view">
-          <view><text >射门课程(全能版第八期)</text></view>
-          <view><text class="price">￥3546</text><view><image class="" src="/img/教练@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" /><text>高嵩</text></view></view>
-        </view>
-      </view>
-    </view>
-    <view id="green" class="scroll-view-item bc_green">
-      <view class="view-item" hover-class="none" hover-stop-propagation="false">
-        <view class="left_img">
-            <image class="" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="right_view">
-          <view><text >射门课程(全能版第八期)</text></view>
-          <view><text class="price">￥3546</text><view><image class="" src="/img/教练@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" /><text>高嵩</text></view></view>
-        </view>
-      </view>
-    </view>
-    <view id="green" class="scroll-view-item bc_green">
+    <view id="green" class="scroll-view-item bc_green" wx:for="{{filter_list}}">
       <view class="view-item" hover-class="none" hover-stop-propagation="false">
         <view class="left_img">
             <image class="" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>

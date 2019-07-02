@@ -1,6 +1,10 @@
 /* pages/home/home.wxss */
+page{
+  height: 100%;
+}
 .home_main{
   position: relative;
+  height: 100%;
 }
 .titleBg{
     height: 360rpx;
@@ -59,7 +63,7 @@
     border-radius: 5rpx;
     width: calc(100% - 104rpx);
     margin: 0 30rpx;
-    height: 886rpx;
+    height: calc(100% - 400rpx);
     overflow: hidden;
     position: absolute;
     top: 325rpx;
@@ -77,6 +81,9 @@
   border-bottom: 1px solid #eeeeee;
 
 }
+.main_list .list{
+  height: 100%;
+}
 .main_list .title image{
   width: 2rpx;
   height: 100%;
@@ -84,6 +91,9 @@
 }
 .main_list swiper{
   height: 369rpx;
+}
+.scrollview{
+  height: calc(100% - 36rpx);
 }
 .main_list .scroll-view-item{
   height: 190rpx;

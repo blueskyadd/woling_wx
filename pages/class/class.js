@@ -1,4 +1,5 @@
 // pages/class/class.js
+var call = require("../../utils/request.js")
 Page({
 
   /**
@@ -6,13 +7,33 @@ Page({
    */
   data: {
     isShow: false,
+    setIndexId: '1',
+    filtrate_list: [
+      {
+        value: '5-6岁',
+        id: '1'
+      },
+      {
+        value: '7-8岁',
+        id: '2'
+      },
+      {
+        value: '8-10岁',
+        id: '3'
+      },
+      {
+        value: '10-12岁',
+        id: '4'
+      },
+    ],
+    filter_list:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getListData(1)
   },
 
   /**
@@ -90,6 +111,23 @@ Page({
   tapMove: function(e) {
     this.setData({
       scrollTop: this.data.scrollTop + 10
+    })
+  },
+  changeFilter(data){
+    console.log(data.currentTarget.id)
+    this.setData({
+      setIndexId : data.currentTarget.id,
+      isShow: false
+    })  
+    this.getListData(data.currentTarget.id)
+  },
+  getListData(taber){
+    call.getData('good/wx/course/?age_type=' + taber , res =>{
+      this.setData({
+        filter_list: res.data.results
+      })
+    },err =>{
+      console.log(err)
     })
   }
 })

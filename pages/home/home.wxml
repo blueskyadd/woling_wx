@@ -18,12 +18,12 @@
     </view>
   </view>
   <view class="main_list">
-    <view>
+    <view class="list">
       <view class="title">
         <image class="" src="/img/矩形4@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
         <text>我的试听</text>
       </view>
-      <scroll-view scroll-with-animation="true" scroll-y style="height: 818rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <scroll-view scroll-with-animation="true" class="scrollview" scroll-y  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
         <view id="green" class="scroll-view-item bc_green">
           <view class="view-item" hover-class="none" hover-stop-propagation="false">
             <view class="left_img">

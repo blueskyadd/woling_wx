@@ -81,3 +81,12 @@ swiper{
   height: 0;
   color: transparent;
 }
+.loadText{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 25rpx;
+  color: #666;
+  line-height: 80rpx;
+  height: 80rpx;
+}

@@ -8,10 +8,10 @@
         <text selectable="false" space="false" decode="false">试听课详情</text>
       </view>
       <view class="portrait">
-        <image src="https://images.unsplash.com/photo-1551446591-142875a901a1?w=640" />
+        <image src="{{detailObj.image}}" />
         <view class="main_title">
           <text class="userName" selectable="false" space="false" decode="false">
-                        小辣椒
+                        {{detailObj.coach}}
                     </text>
           <text class="phone">著名足球教练</text>
         </view>
@@ -19,19 +19,19 @@
     </view>
   </view>
   <view class='main_deteil'>
-    <text class='title'>香蕉射门</text>
+    <text class='title'>{{detailObj.name}}</text>
     <view class='time'>
-      <text>上课时段:2021.23-4568.56</text>
-      <text>课时:32课时</text>
+      <text>上课时段:{{detailObj.start_time}}-{{detailObj.end_time}}</text>
+      <text>课时:{{detailObj.course_num}}课时</text>
     </view>
     <view class='Detail'>
       <view class='detail_list'>
         <text class='detail_Title'>教练介绍</text>
-        <text class='detail_main'>题目就是如上要求，使用纯 CSS，完成单行文本居中显示文字，多行居左显示，最多两行超过用省略号结尾，效果如下： 不愿看长篇大论的可以先看看效果：-webkit- 内核下 接下来就一步一步来实现这个效果。题目就是如上要求，使用纯 CSS，完成单行文本居中显示文字，多行居左显示，最多两行超过用省略号结尾，效果如下： 不愿看长篇大论的可以先看看效果：-webkit- 内核下 接下来就一步一步来实现这个效果。</text>
+        <text class='detail_main'>{{detailObj.coach_info}}</text>
       </view>
       <view class='detail_list' style='border:0'>
         <text class='detail_Title'>课程介绍</text>
-        <text class='detail_main'>题目就是如上要求，使用纯 CSS，完成单行文本居中显示文字，多行居左显示，最多两行超过用省略号结尾，效果如下： 不愿看长篇大论的可以先看看效果：-webkit- 内核下 接下来就一步一步来实现这个效果。题目就是如上要求，使用纯 CSS，完成单行文本居中显示文字，多行居左显示，最多两行超过用省略号结尾，效果如下： 不愿看长篇大论的可以先看看效果：-webkit- 内核下 接下来就一步一步来实现这个效果。</text>
+        <text class='detail_main'>{{detailObj.desc}}</text>
       </view>
       <button bindtap='showBottom'>立即预约</button>
     </view>
@@ -42,7 +42,7 @@
       </view>
       <view class='bottom_tap_time'>
         <view class="{{index == activeIndex?'active':''}}" data-Index="{{index}}" bindtap='isActivelist' wx:for="{{timeList}}">
-          <text>{{item}}</text>
+          <text>{{item.start_time}}-{{item.end_time}}</text>
         </view>
       </view>
       <button bindtap="ShowForm">确定试听</button>

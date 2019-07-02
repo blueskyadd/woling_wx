@@ -1,4 +1,4 @@
-var order = ['red', 'yellow', 'blue', 'green', 'red']
+var call = require("../../utils/request.js")
 Page({
   data: {
     imgUrls: [
@@ -11,7 +11,11 @@ Page({
     interval: 3000,
     duration: 1000,
     toView: 'red',
-    scrollTop: 100
+    scrollTop: 100,
+    indexList:[],
+    loadText:'加载中...',
+    number:1,
+    isloadText: false
   },
   changeIndicatorDots: function (e) {
     this.setData({
@@ -38,28 +42,125 @@ Page({
   },
   lower: function(e) {
     console.log(e)
+
   },
   scroll: function(e) {
     console.log(e)
   },
-  tap: function(e) {
-    for (var i = 0; i < order.length; ++i) {
-      if (order[i] === this.data.toView) {
-        this.setData({
-          toView: order[i + 1]
-        })
-        break
-      }
-    }
-  },
   tapMove: function(e) {
+    cobsole.log(e)
     this.setData({
       scrollTop: this.data.scrollTop + 10
     })
   },
-  goclassDetail(){
+  goclassDetail(e){
+    console.log(e)
     wx.navigateTo({
-      url: '/pages/classDetail/classDetail'
+      url: '/pages/classDetail/classDetail?id=' + e.currentTarget.id
     })
-  }
+  },
+  
+  onLoad(){
+    this.getIndexlist(1)
+  },
+  getIndexlist(number){
+    wx.showLoading({
+      title: '加载中',
+    })
+    var list = [
+      {
+        "id": 4,
+        "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
+        "course": "课程01",
+        "time": "2019-06-25 10:00",
+        "price": 120.0,
+        "coach": "李甜甜"
+        },
+      {
+        "id": 44,
+        "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
+        "course": "课程01",
+        "time": "2019-06-25 10:00",
+        "price": 120.0,
+        "coach": "李甜甜"
+        },
+      {
+        "id": 42,
+        "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
+        "course": "课程01",
+        "time": "2019-06-25 10:00",
+        "price": 120.0,
+        "coach": "李甜甜"
+        },
+      {
+        "id": 34,
+        "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
+        "course": "课程23401",
+        "time": "2019-06-25 10:00",
+        "price": 12.0,
+        "coach": "李甜甜"
+        },
+      {
+        "id": 4,
+        "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
+        "course": "课程01",
+        "time": "2019-06-25 10:00",
+        "price": 120.0,
+        "coach": "李甜甜"
+      },
+      {
+        "id": 44,
+        "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
+        "course": "课程01",
+        "time": "2019-06-25 10:00",
+        "price": 120.0,
+        "coach": "李甜甜"
+      },
+      {
+        "id": 42,
+        "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
+        "course": "课程01",
+        "time": "2019-06-25 10:00",
+        "price": 120.0,
+        "coach": "李甜甜"
+      },
+      {
+        "id": 34,
+        "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
+        "course": "课程23401",
+        "time": "2019-06-25 10:00",
+        "price": 12.0,
+        "coach": "李甜甜"
+      }
+    ]
+    
+    if(this.data.indexList.length >20){
+     
+      this.setData({loadText : '已加载全部数据'})
+    }else{
+      this.setData({
+        isloadText: true,
+        indexList: number == 1 ? list : this.data.indexList.concat(list)
+      })
+    }
+    wx.hideLoading()
+    // call.getData('order/wx/appoint/',res =>{
+    //   console.log(res)
+    //   this.setData({
+    //     isloadText: true,
+    //     indexList: res.data.results
+    //   })
+    // },err =>{
+    //   console.log(err)
+    // })
+  },
+  /**
+ * 页面上拉触底事件的处理函数
+ */
+  onReachBottom: function () {
+    this.setData({
+      number: this.data.number + 1
+    })
+    this.getIndexlist(this.data.number)
+  },
 })
