@@ -1,18 +1,18 @@
 <!--pages/home/home.wxml-->
 <view class='home_main'>
   <view class="titleBg">
-    <image class="imgBg" src="/img/bj@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+    <image class="imgBg" src="/img/myBg.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     <view class="main">
       <view class="title">
         <text selectable="false" space="false" decode="false">我的</text>
       </view>
       <view class="portrait">
-        <image src="https://images.unsplash.com/photo-1551446591-142875a901a1?w=640" />
+        <image src="{{picture}}" />
         <view class="main_title">
           <text class="userName" selectable="false" space="false" decode="false">
-                        小辣椒
+                        {{name}}
                     </text>
-          <text class="phone">156-1655-1516</text>
+          <text class="phone"></text>
         </view>
       </view>
     </view>
@@ -23,102 +23,28 @@
         <image class="" src="/img/矩形4@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
         <text>我的试听</text>
       </view>
-      <scroll-view scroll-with-animation="true" class="scrollview" scroll-y  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-        <view id="green" class="scroll-view-item bc_green">
+      <scroll-view scroll-with-animation="true" class="scrollview" bindscrolltolower="loadMore" scroll-y  bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <view id="green" class="scroll-view-item bc_green" wx:for="{{listData}}" id="{{item.id}}"  bindtap="goclassdetail">
           <view class="view-item" hover-class="none" hover-stop-propagation="false">
             <view class="left_img">
-              <image class="" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+              <image class="" src="{{item.image}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
             </view>
             <view class="right_view">
               <view>
-                <text>射门课程(全能版第八期)</text>
+                <text>{{item.course}}</text>
               </view>
+              <view class="time"><image src="/img/time.png"/><text>{{item.time}}</text></view>
               <view>
-                <text class="price">￥3546</text>
+                <text class="price">￥{{item.price}}</text>
                 <view>
                   <image class="" src="/img/教练@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-                  <text>高嵩</text>
+                  <text>{{item.coach}}</text>
                 </view>
               </view>
             </view>
           </view>
         </view>
-        <view id="green" class="scroll-view-item bc_green">
-          <view class="view-item" hover-class="none" hover-stop-propagation="false">
-            <view class="left_img">
-              <image class="" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
-            </view>
-            <view class="right_view">
-              <view>
-                <text>射门课程(全能版第八期)</text>
-              </view>
-              <view>
-                <text class="price">￥3546</text>
-                <view>
-                  <image class="" src="/img/教练@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-                  <text>高嵩</text>
-                </view>
-              </view>
-            </view>
-          </view>
-        </view>
-        <view id="green" class="scroll-view-item bc_green">
-          <view class="view-item" hover-class="none" hover-stop-propagation="false">
-            <view class="left_img">
-              <image class="" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
-            </view>
-            <view class="right_view">
-              <view>
-                <text>射门课程(全能版第八期)</text>
-              </view>
-              <view>
-                <text class="price">￥3546</text>
-                <view>
-                  <image class="" src="/img/教练@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-                  <text>高嵩</text>
-                </view>
-              </view>
-            </view>
-          </view>
-        </view>
-        <view id="green" class="scroll-view-item bc_green">
-          <view class="view-item" hover-class="none" hover-stop-propagation="false">
-            <view class="left_img">
-              <image class="" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
-            </view>
-            <view class="right_view">
-              <view>
-                <text>射门课程(全能版第八期)</text>
-              </view>
-              <view>
-                <text class="price">￥3546</text>
-                <view>
-                  <image class="" src="/img/教练@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-                  <text>高嵩</text>
-                </view>
-              </view>
-            </view>
-          </view>
-        </view>
-        <view id="green" class="scroll-view-item bc_green">
-          <view class="view-item" hover-class="none" hover-stop-propagation="false">
-            <view class="left_img">
-              <image class="" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
-            </view>
-            <view class="right_view">
-              <view>
-                <text>射门课程(全能版第八期)</text>
-              </view>
-              <view>
-                <text class="price">￥3546</text>
-                <view>
-                  <image class="" src="/img/教练@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-                  <text>高嵩</text>
-                </view>
-              </view>
-            </view>
-          </view>
-        </view>
+        <text class="loadText" wx:if="{{isloadText}}">{{loadText}}</text>
       </scroll-view>
     </view>
   </view>

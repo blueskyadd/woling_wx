@@ -35,7 +35,7 @@ App({
                 },
                 success(res) {
                   console.log(res.data)
-                  wx.setStorageSync('set_cookie', res.header['Set-Cookie'])
+                  wx.setStorageSync('set_cookie', res.header['Set-Cookie'].split(';')[0] + ';' + res.header['Set-Cookie'].split(';')[3].split(',')[1])
                 }
               })
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回

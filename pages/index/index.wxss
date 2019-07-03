@@ -1,6 +1,9 @@
-
+page{
+  height: 100%;
+}
 .main{
   background: #f3f5f7;
+  height: 100%;
 }
 .page-section{
   height: 369rpx;

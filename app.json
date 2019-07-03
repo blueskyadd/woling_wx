@@ -1,10 +1,11 @@
 {
   "pages": [
-    "pages/classDetail/classDetail",
+    
     "pages/logs/logs",
     "pages/index/index",
     "pages/home/home",
-    "pages/class/class"
+    "pages/class/class",
+    "pages/classDetail/classDetail"
     
   ],
   "window": {

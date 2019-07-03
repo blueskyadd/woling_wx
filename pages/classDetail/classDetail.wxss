@@ -166,7 +166,7 @@ page{
   justify-content: space-between;
   font-size: 22rpx;
   color: #cccccc;
-  align-items: center;
+  /* align-items: center; */
   overflow-y: scroll;
   height: 340rpx;
 }

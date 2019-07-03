@@ -27,11 +27,11 @@
     <view class='Detail'>
       <view class='detail_list'>
         <text class='detail_Title'>教练介绍</text>
-        <text class='detail_main'>{{detailObj.coach_info}}</text>
+        <text class='detail_main'>{{detailObj.coach_info?detailObj.coach_info:''}}</text>
       </view>
       <view class='detail_list' style='border:0'>
         <text class='detail_Title'>课程介绍</text>
-        <text class='detail_main'>{{detailObj.desc}}</text>
+        <text class='detail_main'>{{detailObj.desc?detailObj.desc:''}}</text>
       </view>
       <button bindtap='showBottom'>立即预约</button>
     </view>
@@ -41,7 +41,7 @@
         <image class="close" src="/img/关闭@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="true" binderror="" bindload="" bindtap='showBottom' />
       </view>
       <view class='bottom_tap_time'>
-        <view class="{{index == activeIndex?'active':''}}" data-Index="{{index}}" bindtap='isActivelist' wx:for="{{timeList}}">
+        <view class="{{index == activeIndex?'active':''}}" data-Index="{{index}}" id="{{item.id}}" bindtap='isActivelist' wx:for="{{timeList}}">
           <text>{{item.start_time}}-{{item.end_time}}</text>
         </view>
       </view>
@@ -53,9 +53,9 @@
         <image class="close" src="/img/关闭@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="true" binderror="" bindload="" bindtap='ShowForm' />
       </view>
       <view class='form'>
-        <view><text>姓名</text><input ></input></view>
-        <view><text>年龄</text><input ></input></view>
-        <view><text>联系方式</text><input></input></view>
+        <view><text>姓名</text><input bindinput='inputHandleName' value="{{username}}">{{username}}</input></view>
+        <view><text>年龄</text><input bindinput='inputHandleAge' value="{{age}}"></input></view>
+        <view><text>联系方式</text><input bindinput='inputHandlePhone' value="{{phone}}">{{phone}}</input></view>
       </view>
       <button bindtap='submit'>确定</button>
     </view>

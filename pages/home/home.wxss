@@ -145,8 +145,31 @@ page{
   margin-top: 12rpx;
   margin-right: 9rpx;
 }
+.main_list .right_view .time{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  
+}
+.main_list .right_view .time text{
+  font-size: 24rpx;
+  color: #999999;
+}
+.main_list .right_view .time image{
+  width: 24rpx;
+  height:24rpx;
+  margin-right:9rpx;
+  
+}
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
   color: transparent;
+}
+.loadText{
+  display: flex;
+  font-size: 25rpx;
+  line-height: 80rpx;
+  color: #666;
+  justify-content: center;
 }

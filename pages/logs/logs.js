@@ -27,8 +27,8 @@ Page({
               },
               success(res) {
                 console.log(res.data)
-                console.log(res.header['Set-Cookie'])
-                wx.setStorageSync('set_cookie', res.header['Set-Cookie'])
+                console.log(res.header['Set-Cookie'].split(';')[0] + ';' + res.header['Set-Cookie'].split(';')[3].split(',')[1])
+                wx.setStorageSync('set_cookie', res.header['Set-Cookie'].split(';')[0] + ';' + res.header['Set-Cookie'].split(';')[3].split(',')[1])
                 wx.switchTab({
                   url: '/pages/index/index'
                 })

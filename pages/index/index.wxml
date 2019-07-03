@@ -17,11 +17,11 @@
       <view class="scroll-view-item bc_green" id="{{item.id}}" bindtap='goclassDetail' wx:for='{{indexList}}'>
         <view class="view-item" hover-class="none" hover-stop-propagation="false">
           <view class="left_img">
-            <image class="" src="{{item.image}}" mode="aspectFit|aspectFill|widthFix" lazy-load="true" binderror="" bindload=""></image>
+            <image class="" src="{{item.front_image}}" mode="aspectFit|aspectFill|widthFix" lazy-load="true" binderror="" bindload=""></image>
           </view>
           <view class="right_view">
             <view>
-              <text>{{item.course}}</text>
+              <text>{{item.name}}</text>
             </view>
             <view>
               <text class="price">￥{{item.price}}</text>

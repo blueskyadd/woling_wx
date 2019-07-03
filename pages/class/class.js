@@ -26,7 +26,10 @@ Page({
         id: '4'
       },
     ],
-    filter_list:[]
+    filter_list:[],
+    isloadText: false,
+    loadText:'加载中...',
+    number:1
   },
 
   /**
@@ -63,40 +66,16 @@ Page({
   onUnload: function () {
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  loadMore(){
+    this.setData({
+      number: this.data.number + 1
+    })
+    this.getListData(this.data.setIndexId, this.data.number)
   },
   changeMask(){
     this.setData({
       isShow: !this.data.isShow
     })
-  },
-  upper: function(e) {
-    console.log(e)
-  },
-  lower: function(e) {
-    console.log(e)
-  },
-  scroll: function(e) {
-    console.log(e)
   },
   tap: function(e) {
     for (var i = 0; i < order.length; ++i) {
@@ -119,15 +98,52 @@ Page({
       setIndexId : data.currentTarget.id,
       isShow: false
     })  
-    this.getListData(data.currentTarget.id)
+    this.getListData(data.currentTarget.id, 1)
   },
-  getListData(taber){
+  getListData(taber, number){
+    wx.showLoading({
+      title: '加载中',
+    })
     call.getData('good/wx/course/?age_type=' + taber , res =>{
-      this.setData({
-        filter_list: res.data.results
-      })
+      console.log(res)
+      res.results = res.results.concat(res.results.concat(res.results.concat(res.results.concat(res.results.concat(res.results.concat(res.results.concat(res.results)))))))
+      wx.hideLoading()
+      if (!res.results.length){
+        wx.showToast({
+          title: '暂无数据',
+          icon: 'none',
+          duration: 1000,
+          mask: true
+        })
+        this.setData({
+          isloadText: true,
+          loadText:'暂无数据',
+          filter_list: []
+        })
+      }else{
+        if (!res.next){
+          this.setData({
+            isloadText: true,
+            loadText: '已加载全部数据',
+          })
+        }else{
+          this.setData({
+            isloadText: false
+          })
+        }
+        this.setData({
+          filter_list: number == 1 ? res.results : this.data.filter_list.concat(res.results),
+        })
+      }
+      
     },err =>{
+      wx.hideLoading()
       console.log(err)
+    })
+  },
+  goclassdetail(e){
+    wx.navigateTo({
+      url: '/pages/classDetail/classDetail?id=' + e.currentTarget.id
     })
   }
 })

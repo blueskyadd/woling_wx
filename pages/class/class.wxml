@@ -8,17 +8,18 @@
              <text>{{item.value}}</text> <image wx:if="{{item.id == setIndexId}}" class="" src="/img/对@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
          </view>
      </view>
-    <scroll-view scroll-y style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <view id="green" class="scroll-view-item bc_green" wx:for="{{filter_list}}">
+    <scroll-view scroll-y class="scroll" scroll-into-view="{{toView}}" bindscrolltolower="loadMore">
+    <view id="green" class="scroll-view-item bc_green" wx:for="{{filter_list}}" id="{{item.id}}"  bindtap="goclassdetail">
       <view class="view-item" hover-class="none" hover-stop-propagation="false">
         <view class="left_img">
-            <image class="" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+            <image class="" src="{{item.front_image}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
         </view>
         <view class="right_view">
-          <view><text >射门课程(全能版第八期)</text></view>
-          <view><text class="price">￥3546</text><view><image class="" src="/img/教练@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" /><text>高嵩</text></view></view>
+          <view><text >{{item.name}}</text></view>
+          <view><text class="price">￥{{item.price}}</text><view><image class="" src="/img/教练@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" /><text>{{item.coach}}</text></view></view>
         </view>
       </view>
     </view>
+    <text wx:if="{{isloadText}}" class="loadText">{{loadText}}</text>
   </scroll-view>
   </view>
