@@ -29,14 +29,15 @@ Page({
     filter_list:[],
     isloadText: false,
     loadText:'加载中...',
-    number:1
+    number:1,
+    isLoadMore: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getListData(1)
+    this.getListData(1, 1)
   },
 
   /**
@@ -70,7 +71,10 @@ Page({
     this.setData({
       number: this.data.number + 1
     })
-    this.getListData(this.data.setIndexId, this.data.number)
+    if(this.data.isLoadMore){
+      this.getListData(this.data.setIndexId, this.data.number)
+    }
+   
   },
   changeMask(){
     this.setData({
@@ -104,37 +108,46 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    call.getData('good/wx/course/?age_type=' + taber , res =>{
-      console.log(res)
-      res.results = res.results.concat(res.results.concat(res.results.concat(res.results.concat(res.results.concat(res.results.concat(res.results.concat(res.results)))))))
+    call.getData('good/wx/course/?age_type=' + taber + '&p=' + number , res =>{
+      console.log(res.detail)
       wx.hideLoading()
-      if (!res.results.length){
-        wx.showToast({
-          title: '暂无数据',
-          icon: 'none',
-          duration: 1000,
-          mask: true
-        })
+      if (res.detail) {
         this.setData({
-          isloadText: true,
-          loadText:'暂无数据',
-          filter_list: []
+          isLoadMore: false
         })
+        wx.showToast({ title: '已加载全部数据', icon: 'none', duration: 1000, mask: true })
       }else{
-        if (!res.next){
+        if (!res.results.length || res.results.length == 0 ) {
+          wx.showToast({
+            title: '暂无数据',
+            icon: 'none',
+            duration: 1000,
+            mask: true
+          })
           this.setData({
             isloadText: true,
-            loadText: '已加载全部数据',
+            loadText: '暂无数据',
+            filter_list: [],
+            isLoadMore: false
           })
-        }else{
+        } else {
+          if (!res.next) {
+            this.setData({
+              isloadText: true,
+              loadText: '已加载全部数据',
+              isLoadMore: false
+            })
+          } else {
+            this.setData({
+              isloadText: false
+            })
+          }
           this.setData({
-            isloadText: false
+            filter_list: number == 1 ? res.results : this.data.filter_list.concat(res.results),
           })
         }
-        this.setData({
-          filter_list: number == 1 ? res.results : this.data.filter_list.concat(res.results),
-        })
       }
+      
       
     },err =>{
       wx.hideLoading()

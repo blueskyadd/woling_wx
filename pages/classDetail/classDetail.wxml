@@ -4,7 +4,9 @@
     <image class="imgBg" src="/img/bj@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     <view class="main">
       <view class="title">
-        <image class='goback' bindtap='goback' src='/img/goback.png'></image>
+        <view class='goback' bindtap='goback' >
+          <image  src='/img/goback.png'></image>
+        </view>
         <text selectable="false" space="false" decode="false">试听课详情</text>
       </view>
       <view class="portrait">
@@ -33,18 +35,20 @@
         <text class='detail_Title'>课程介绍</text>
         <text class='detail_main'>{{detailObj.desc?detailObj.desc:''}}</text>
       </view>
-      <button bindtap='showBottom'>立即预约</button>
+      <button bindtap='isGetTimeList' data-number="1">立即预约</button>
     </view>
     <view class='bottom_tap'  wx:if="{{isShowTime}}">
       <view class='bottom_tap_title'>
         <text>选择试听时间</text>
         <image class="close" src="/img/关闭@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="true" binderror="" bindload="" bindtap='showBottom' />
       </view>
+      <scroll-view scroll-with-animation="true" class="scrollview" bindscrolltolower="loadMore" scroll-y  bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
       <view class='bottom_tap_time'>
         <view class="{{index == activeIndex?'active':''}}" data-Index="{{index}}" id="{{item.id}}" bindtap='isActivelist' wx:for="{{timeList}}">
           <text>{{item.start_time}}-{{item.end_time}}</text>
         </view>
       </view>
+       </scroll-view>
       <button bindtap="ShowForm">确定试听</button>
     </view>
     <view class='bottom_tap'  wx:if="{{isShowForm}}">

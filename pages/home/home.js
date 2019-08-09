@@ -13,6 +13,7 @@ Page({
     number:1,
     isloadText: false,
     loadText: '加载中...',
+    isLoadMore: true
   },
 
   /**
@@ -24,53 +25,10 @@ Page({
     this.getUser()
     this.getDataList()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   },
   upper: function(e) {
@@ -113,62 +71,58 @@ Page({
       title: '加载中',
     })
     call.getData('order/wx/appoint/', res=>{
-      console.log(res)
-      res = {
-        "count": 1,
-        "next": null,
-        "previous": null,
-        "results": [
-          {
-            "id": 4,
-            "image": "http://10.102.100.23:8080/media/goods/front/12724384_085414541114_2_-_%E5%89%AF%E6%9C%AC.jpg",
-            "course": "课程01",
-            "time": "2019-06-25 10:00",
-            "price": 120.0,
-            "coach": "李甜甜"
-          }
-        ]
-      }
-      res.results = res.results.concat(res.results.concat(res.results.concat(res.results.concat(res.results.concat(res.results.concat(res.results.concat(res.results)))))))
+      
       wx.hideLoading()
-      if (!res.results.length) {
-        wx.showToast({
-          title: '暂无数据',
-          icon: 'none',
-          duration: 1000,
-          mask: true
-        })
+      if (res.detail) {
         this.setData({
-          isloadText: true,
-          loadText: '暂无数据',
-          listData: []
+          isLoadMore: false
         })
-      } else {
-        if (!res.next) {
+        wx.showToast({ title: '已加载全部数据', icon: 'none', duration: 1000, mask: true })
+      }else{
+        if (!res.results.length || res.results.length  == 0) {
+          wx.showToast({
+            title: '暂无数据',
+            icon: 'none',
+            duration: 1000,
+            mask: true,
+            
+          })
           this.setData({
             isloadText: true,
-            loadText: '已加载全部数据',
+            loadText: '暂无数据',
+            isLoadMore: false,
+            listData: []
           })
         } else {
+          if (!res.next ) {
+            this.setData({
+              isloadText: true,
+              loadText: '已加载全部数据',
+            })
+          } else {
+            this.setData({
+              isloadText: false
+            })
+          }
           this.setData({
-            isloadText: false
+            listData: number == 1 ? res.results : this.data.listData.concat(res.results),
           })
         }
-        this.setData({
-          listData: number == 1 ? res.results : this.data.listData.concat(res.results),
-        })
       }
+     
     },res=>{
       wx.hideLoading()
       console.log(res)
     })
   },
   loadMore(){
-    console.log('aaaaaa')
     this.setData({
       number: this.data.number + 1
     })
-    this.getDataList(this.data.number)
+    if (this.data.isLoadMore){
+      this.getDataList(this.data.number)
+    }
+    
   },
   goclassdetail(e) {
     wx.navigateTo({

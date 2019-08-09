@@ -11,7 +11,8 @@ Page({
     indexList:[],
     loadText:'加载中...',
     number:1,
-    isloadText: false
+    isloadText: false,
+    isLoadMore: true
   },
   changeIndicatorDots: function (e) {
     this.setData({
@@ -63,105 +64,38 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    // var list = [
-    //   {
-    //     "id": 4,
-    //     "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
-    //     "course": "课程01",
-    //     "time": "2019-06-25 10:00",
-    //     "price": 120.0,
-    //     "coach": "李甜甜"
-    //     },
-    //   {
-    //     "id": 44,
-    //     "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
-    //     "course": "课程01",
-    //     "time": "2019-06-25 10:00",
-    //     "price": 120.0,
-    //     "coach": "李甜甜"
-    //     },
-    //   {
-    //     "id": 42,
-    //     "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
-    //     "course": "课程01",
-    //     "time": "2019-06-25 10:00",
-    //     "price": 120.0,
-    //     "coach": "李甜甜"
-    //     },
-    //   {
-    //     "id": 34,
-    //     "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
-    //     "course": "课程23401",
-    //     "time": "2019-06-25 10:00",
-    //     "price": 12.0,
-    //     "coach": "李甜甜"
-    //     },
-    //   {
-    //     "id": 4,
-    //     "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
-    //     "course": "课程01",
-    //     "time": "2019-06-25 10:00",
-    //     "price": 120.0,
-    //     "coach": "李甜甜"
-    //   },
-    //   {
-    //     "id": 44,
-    //     "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
-    //     "course": "课程01",
-    //     "time": "2019-06-25 10:00",
-    //     "price": 120.0,
-    //     "coach": "李甜甜"
-    //   },
-    //   {
-    //     "id": 42,
-    //     "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
-    //     "course": "课程01",
-    //     "time": "2019-06-25 10:00",
-    //     "price": 120.0,
-    //     "coach": "李甜甜"
-    //   },
-    //   {
-    //     "id": 34,
-    //     "image": "http://img0.imgtn.bdimg.com/it/u=2738234332,2025993528&fm=26&gp=0.jpg",
-    //     "course": "课程23401",
-    //     "time": "2019-06-25 10:00",
-    //     "price": 12.0,
-    //     "coach": "李甜甜"
-    //   }
-    // ]
     
-    // if(this.data.indexList.length >20){
-     
-    //   this.setData({loadText : '已加载全部数据'})
-    // }else{
-    //   this.setData({
-    //     isloadText: true,
-    //     indexList: number == 1 ? list : this.data.indexList.concat(list)
-    //   })
-    // }
-    
-    call.getData('good/wx/course/?age_type=',res =>{
+    call.getData('good/wx/course/?age_type=' + number,res =>{
       console.log(res)
-      if (!res.results.length){
+      if (res.detail) {
         this.setData({
-          isloadText: true,
-          loadText: '暂无数据',
-          indexList: []
+          isLoadMore: false
         })
-      }else{
-        if (!res.next) {
-          this.setData({
-            isloadText: true,
-            loadText: '已加载全部数据',
-          })
-        } else {
-          this.setData({
-            isloadText: false
-          })
-        }
-        this.setData({
-          indexList: number == 1 ? res.results : this.data.indexList.concat(res.results),
-        })
+        wx.showToast({ title: '已加载全部数据', icon: 'none', duration: 1000, mask: true })
+      } else {
+        if (!res.results.length || res.results.length == 0){
+            this.setData({
+              isloadText: true,
+              loadText: '暂无数据',
+              indexList: [],
+              isLoadMore: false
+            })
+          }else{
+            if (!res.next ) {
+              this.setData({
+                isloadText: true,
+                loadText: '已加载全部数据',
+                isLoadMore: false
+              })
+            } else {
+              this.setData({
+                isloadText: false
+              })
+            }
+            this.setData({
+              indexList: number == 1 ? res.results : this.data.indexList.concat(res.results),
+            })
+          }
       }
       wx.hideLoading()
       
@@ -177,6 +111,9 @@ Page({
     this.setData({
       number: this.data.number + 1
     })
-    this.getIndexlist(this.data.number)
+    if(this.data.isLoadMore){
+      this.getIndexlist(this.data.number)
+    }
+    
   },
 })

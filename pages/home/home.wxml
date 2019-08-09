@@ -24,7 +24,7 @@
         <text>我的试听</text>
       </view>
       <scroll-view scroll-with-animation="true" class="scrollview" bindscrolltolower="loadMore" scroll-y  bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-        <view id="green" class="scroll-view-item bc_green" wx:for="{{listData}}" id="{{item.id}}"  bindtap="goclassdetail">
+        <view id="green" class="scroll-view-item bc_green" wx:for="{{listData}}" id="{{item.goods}}"  bindtap="goclassdetail">
           <view class="view-item" hover-class="none" hover-stop-propagation="false">
             <view class="left_img">
               <image class="" src="{{item.image}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>

@@ -15,7 +15,7 @@ Page({
         wx.getUserInfo({
           success: res => {
             wx.request({
-              url: 'http://10.102.100.23:8080/user/wx/login/',
+              url: 'https://www.volley2019.club/user/wx/login/',
               method: 'post',
               data: {
                 'code': this.data.userCode,

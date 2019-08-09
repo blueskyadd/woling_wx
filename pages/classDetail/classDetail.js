@@ -14,7 +14,9 @@ Page({
     timeId:'',
     username:'',
     age:'',
-    phone:''
+    phone:'',
+    number: 1,
+    isLoadMore: true
   },
 
   /**
@@ -27,55 +29,6 @@ Page({
     })
     this.getClassDetail(options.id)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   goback(){
     wx.navigateBack({     //返回上一页面
       delta: 1,
@@ -85,80 +38,51 @@ Page({
     this.setData({
       isShowTime: !this.data.isShowTime
     })
-    this.getTimeList()
-    
   },
   ShowForm(){
     this.setData({
-      isShowForm: !this.data.isShowForm
+      isShowForm: !this.data.isShowForm,
+      username: '',
+      age: '',
+      phone: '',
     })
   },
-  getTimeList(){
+  isGetTimeList(){
+    this.setData({
+      isShowTime: !this.data.isShowTime
+    })  
+    this.getTimeList(1)
+  },
+  getTimeList(number){
     wx.showLoading({
       title: '加载中',
     })
-    call.getData('good/wx/coursetime/?course=' + this.data.classId, res => {
+    call.getData('good/wx/coursetime/?course=' + this.data.classId + '&p=' + number, res => {
       console.log(res)
-      res = {
-        "count": 2,
-        "next": null,
-        "previous": null,
-        "results": [
-          {
-            "id": 1,
-            "start_time": "06.25 10:00",
-            "end_time": "12:00",
-            "inventory": 12 
-          },
-          {
-            "id": 2,
-            "start_time": "06.25 12:00",
-            "end_time": "14:00",
-            "inventory": 12
-          },
-          {
-            "id": 1,
-            "start_time": "06.25 10:00",
-            "end_time": "12:00",
-            "inventory": 12
-          },
-          {
-            "id": 2,
-            "start_time": "06.25 12:00",
-            "end_time": "14:00",
-            "inventory": 12
-          },
-          {
-            "id": 1,
-            "start_time": "06.25 10:00",
-            "end_time": "12:00",
-            "inventory": 12
-          },
-          {
-            "id": 2,
-            "start_time": "06.25 12:00",
-            "end_time": "14:00",
-            "inventory": 12
-          },
-          {
-            "id": 1,
-            "start_time": "06.25 10:00",
-            "end_time": "12:00",
-            "inventory": 12
-          },
-          {
-            "id": 2,
-            "start_time": "06.25 12:00",
-            "end_time": "14:00",
-            "inventory": 12
-          }
-        ]
-      }
-      this.setData({
-        timeList: res.results,
-        timeId: res.results[0].id
-      })
       wx.hideLoading()
+      if (res.detail) {
+        this.setData({
+          isLoadMore: false
+        })
+      }else{
+          wx.showToast({ title: '已加载全部数据', icon: 'none', duration: 1000, mask: true })
+          if (res.results.length > 0) {
+            this.setData({
+              timeList: number == 1 ? res.results.concat(res.results) : this.data.timeList.concat(res.results),
+            })
+            this.setData({
+              timeId: this.data.timeList[0].id
+            })
+          } else {
+            var text = number == 1 ? '暂无预约时间' : '已加载全部数据'
+            wx.showToast({ title: text, icon: 'none', duration: 1000, mask: true })
+            this.setData({
+              isLoadMore: false
+            })
+          }
+      }
+        
+      
     }, err => {
       wx.hideLoading()
       console.log(err)
@@ -181,10 +105,16 @@ Page({
       'age':this.data.age,
       'mobile':this.data.phone
     },res =>{
-      console.log(res)
+      console.log(res[0])
       wx.hideLoading()
-      var text = res.detail ? '预约失败' :'预约成功'
-      wx.showToast({ title: text ,icon: 'none',duration: 1000, mask: true})
+      if (res[0]){
+        wx.showToast({ title: '你已试听本课程', icon: 'none', duration: 1000, mask: true })
+      }else{
+        var text = res.detail ? '预约失败' : '预约成功'
+        wx.showToast({ title: text, icon: 'none', duration: 1000, mask: true })
+      }
+      this.ShowForm()
+
     },err=>{
       wx.hideLoading()
       if(err.request.status == '400'){
@@ -192,6 +122,7 @@ Page({
       }else{
         wx.showToast({ title: '预约失败', icon: 'none',duration: 1000,mask: true})
       }
+      this.ShowForm()
     })
    
   },
@@ -208,15 +139,12 @@ Page({
         return true
       }
     }
-    
-
-
   },
   /**@name 加载详情数据 */
   getClassDetail(Id){
     wx.showLoading({ title: '加载中' })
     call.getData('good/wx/course/'+Id +'/', res =>{
-      // console.log(res)
+      console.log(res)
       this.setData({
         detailObj:res
       })
@@ -241,5 +169,13 @@ Page({
     this.setData({
       phone: e.detail.value
     })
+  },
+  loadMore(){
+    this.setData({
+      number: this.data.number + 1
+    })
+    if (this.data.isLoadMore){
+      this.getTimeList(this.data.number)
+    }
   }
 })

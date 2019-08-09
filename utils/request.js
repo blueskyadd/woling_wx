@@ -1,6 +1,6 @@
 var app = getApp();
 //项目URL相同部分，减轻代码量，同时方便项目迁移
-var host = 'http://10.102.100.23:8080/';
+var host = 'https://www.volley2019.club/';
 
 /**
  * POST请求，

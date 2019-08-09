@@ -26,10 +26,14 @@ page{
     display: flex;
     justify-content: start;
 }
-.titleBg .goback{
+.titleBg .goback {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 246rpx;
+}
+.titleBg .goback image{
   width: 21rpx;
   height: 43rpx;
-  margin-right: 238rpx;
   margin-left: 31rpx;
 }
 .titleBg .portrait{
@@ -38,7 +42,7 @@ page{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 68rpx;
+    padding-top: 38rpx;
     justify-content: center;
 }
 .titleBg .portrait image{
@@ -139,6 +143,7 @@ page{
   left: 140rpx;
 }
 /* 底部弹框 */
+
 .bottom_tap{
   height: 558rpx;
   width: calc(100% - 64rpx);
@@ -160,6 +165,11 @@ page{
   width: 36rpx;
   height: 36rpx;
 }
+.scrollview{
+  height: 340rpx;
+  overflow-y: scroll;
+
+}
 .bottom_tap .bottom_tap_time{
   display: flex;
   flex-wrap: wrap;
@@ -167,8 +177,8 @@ page{
   font-size: 22rpx;
   color: #cccccc;
   /* align-items: center; */
-  overflow-y: scroll;
-  height: 340rpx;
+ height: 100%;
+
 }
 .bottom_tap .bottom_tap_time view{
   width: 300rpx;
@@ -213,6 +223,7 @@ page{
   border-radius: 5rpx;
   height: 50rpx;
   width: 521rpx;
+  padding-left: 10rpx;
 }
 .bottom_tap .form view:last-child input{
   width: 468rpx;
