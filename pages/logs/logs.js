@@ -29,7 +29,7 @@ Page({
                 console.log(res.data)
                 console.log(res.header['Set-Cookie'].split(';')[0] + ';' + res.header['Set-Cookie'].split(';')[3].split(',')[1])
                 wx.setStorageSync('set_cookie', res.header['Set-Cookie'].split(';')[0] + ';' + res.header['Set-Cookie'].split(';')[3].split(',')[1])
-                wx.switchTab({
+                wx.reLaunch({
                   url: '/pages/index/index'
                 })
               }
@@ -64,7 +64,7 @@ Page({
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success: function (res) {
-              wx.switchTab({
+              wx.reLaunch({
                 url: '/pages/index/index'
               })
             }

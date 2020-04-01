@@ -23,7 +23,7 @@ App({
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
               wx.request({
-                url: 'http://10.102.100.23:8080/user/wx/login/',
+                url: 'https://www.volley2019.club/user/wx/login/',
                 method: 'post',
                 data: {
                   'code': this.userCode,

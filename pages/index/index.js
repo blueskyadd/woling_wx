@@ -1,7 +1,7 @@
 var call = require("../../utils/request.js")
 Page({
   data: {
-    imgUrls: [ 'https://www.bmeauto.cn/media/goods/images/banner.png' ],
+    imgUrls: ['http://img.taopic.com/uploads/allimg/140720/240467-140H00K62786.jpg', 'http://img01.taopic.com/160919/240411-16091ZGP271.jpg'],
     indicatorDots: true,
     autoplay:true,
     interval: 3000,
@@ -56,8 +56,7 @@ Page({
       url: '/pages/classDetail/classDetail?id=' + e.currentTarget.id
     })
   },
-  
-  onLoad(){
+  onShow(){
     this.getIndexlist(1)
   },
   getIndexlist(number){
@@ -65,7 +64,7 @@ Page({
       title: '加载中',
     })
     
-    call.getData('good/wx/course/?age_type=' + number,res =>{
+    call.getData('good/wx/course/?p=' + number,res =>{
       console.log(res)
       if (res.detail) {
         this.setData({

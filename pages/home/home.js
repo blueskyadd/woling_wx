@@ -17,13 +17,14 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 生命周期函数--监听页
+   * 面加载
    */
-  onLoad: function (options) {
+  onShow: function (options) {
     let that = this
     let query = wx.createSelectorQuery().in(this)
     this.getUser()
-    this.getDataList()
+    this.getDataList(1)
   },
   /**
    * 页面上拉触底事件的处理函数
@@ -70,7 +71,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    call.getData('order/wx/appoint/', res=>{
+    call.getData('order/wx/appoint?p='+number, res=>{
       
       wx.hideLoading()
       if (res.detail) {

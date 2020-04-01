@@ -5,7 +5,7 @@
      </view>
      <view   class="filtrate_list" wx:if="{{isShow}}">
          <view class="filtrate_list_item" bindtap="changeFilter" hover-class="none" id="{{item.id}}" hover-stop-propagation="false" wx:for="{{filtrate_list}}">
-             <text>{{item.value}}</text> <image wx:if="{{item.id == setIndexId}}" class="" src="/img/对@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+             <text>{{item.value}}</text> <image wx:if="{{item.id == setIndexId}}" class="" src="/img/dui.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
          </view>
      </view>
     <scroll-view scroll-y class="scroll" scroll-into-view="{{toView}}" bindscrolltolower="loadMore">

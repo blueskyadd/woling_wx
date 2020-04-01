@@ -1,6 +1,6 @@
 <view class="main">
   <view class="page-section page-section-spacing swiper">
-    <swiper indicator-dots="{{indicatorDots}}" indicator-color='rgba(255, 255, 255, .5)' indicator-active-color='#19cbff' autoplay="{{autoplay}}" interval="{{interval}}" circular='true' duration="{{duration}}">
+    <swiper indicator-dots="{{indicatorDots}}" indicator-color='rgba(255, 255, 255, .5)' indicator-active-color='#19cbff' autoplay="{{autoplay}}" interval="{{interval}}" circular='false' duration="{{duration}}">
       <block wx:for="{{imgUrls}}">
         <swiper-item>
           <image src="{{item}}" class="slide-image" width="355" height="150" />

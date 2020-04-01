@@ -3,7 +3,7 @@
   <view class="titleBg">
     <image class="imgBg" src="/img/myBg.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     <view class="main">
-      <view class="title">
+      <view class="title" >
         <text selectable="false" space="false" decode="false">我的</text>
       </view>
       <view class="portrait">
@@ -34,6 +34,7 @@
                 <text>{{item.course}}</text>
               </view>
               <view class="time"><image src="/img/time.png"/><text>{{item.time}}</text></view>
+              <view class='time adderase' > <text>{{item.address}}</text></view>
               <view>
                 <text class="price">￥{{item.price}}</text>
                 <view>

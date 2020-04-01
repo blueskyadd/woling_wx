@@ -6,7 +6,6 @@
     "pages/home/home",
     "pages/class/class",
     "pages/classDetail/classDetail"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

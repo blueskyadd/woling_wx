@@ -29,7 +29,7 @@ page{
 .titleBg .goback {
   width: 80rpx;
   height: 80rpx;
-  margin-right: 246rpx;
+  margin-right: 220rpx;
 }
 .titleBg .goback image{
   width: 21rpx;
@@ -84,6 +84,9 @@ page{
 .main_deteil .time{
   line-height: 30rpx;
   padding-left: 26rpx;
+  
+}
+.main_deteil .addreas{
   margin-bottom: 23rpx;
 }
 .main_deteil .time text{

@@ -65,7 +65,7 @@ Page({
           isLoadMore: false
         })
       }else{
-          wx.showToast({ title: '已加载全部数据', icon: 'none', duration: 1000, mask: true })
+          // wx.showToast({ title: '已加载全部数据', icon: 'none', duration: 1000, mask: true })
           if (res.results.length > 0) {
             this.setData({
               timeList: number == 1 ? res.results.concat(res.results) : this.data.timeList.concat(res.results),

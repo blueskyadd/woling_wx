@@ -154,6 +154,13 @@ page{
 .main_list .right_view .time text{
   font-size: 24rpx;
   color: #999999;
+  width: 180rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.main_list .right_view .adderase text{
+  width: 320rpx!important;
 }
 .main_list .right_view .time image{
   width: 24rpx;

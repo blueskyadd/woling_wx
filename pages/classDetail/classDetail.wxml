@@ -26,6 +26,7 @@
       <text>上课时段:{{detailObj.start_time}}-{{detailObj.end_time}}</text>
       <text>课时:{{detailObj.course_num}}课时</text>
     </view>
+    <view class='time addreas' > <text>上课地址：{{detailObj.address}}</text></view>
     <view class='Detail'>
       <view class='detail_list'>
         <text class='detail_Title'>教练介绍</text>
@@ -40,7 +41,7 @@
     <view class='bottom_tap'  wx:if="{{isShowTime}}">
       <view class='bottom_tap_title'>
         <text>选择试听时间</text>
-        <image class="close" src="/img/关闭@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="true" binderror="" bindload="" bindtap='showBottom' />
+        <image class="close" src="/img/close.png"  bindtap='showBottom' />
       </view>
       <scroll-view scroll-with-animation="true" class="scrollview" bindscrolltolower="loadMore" scroll-y  bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
       <view class='bottom_tap_time'>
@@ -54,7 +55,7 @@
     <view class='bottom_tap'  wx:if="{{isShowForm}}">
       <view class='bottom_tap_title'>
         <text>填写个人信息</text>
-        <image class="close" src="/img/关闭@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="true" binderror="" bindload="" bindtap='ShowForm' />
+        <image class="close" src="/img/close.png" bindtap='ShowForm' />
       </view>
       <view class='form'>
         <view><text>姓名</text><input bindinput='inputHandleName' value="{{username}}">{{username}}</input></view>

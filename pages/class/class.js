@@ -7,7 +7,7 @@ Page({
    */
   data: {
     isShow: false,
-    setIndexId: '1',
+    setIndexId: '',
     filtrate_list: [
       {
         value: '5-6岁',
@@ -25,6 +25,10 @@ Page({
         value: '10-12岁',
         id: '4'
       },
+      {
+        value: '全部',
+        id: ''
+      },
     ],
     filter_list:[],
     isloadText: false,
@@ -36,9 +40,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.getListData(1, 1)
-  },
+  // onLoad: function (options) {
+  //   this.getListData('', 1)
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -50,8 +54,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function (options) {
+    this.getListData('', 1)
   },
 
   /**
